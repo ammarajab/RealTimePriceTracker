@@ -1,3 +1,10 @@
+//
+//  StockQuote.swift
+//  RealTimePriceTracker
+//
+//  Created by Ammar on 17/11/2025.
+//
+
 import Foundation
 
 enum PriceMovement: String, Codable {

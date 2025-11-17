@@ -1,3 +1,10 @@
+//
+//  RealTimePriceTrackerUITests.swift
+//  RealTimePriceTrackerUITests
+//
+//  Created by Ammar on 17/11/2025.
+//
+
 import XCTest
 
 final class RealTimePriceTrackerUITests: XCTestCase {

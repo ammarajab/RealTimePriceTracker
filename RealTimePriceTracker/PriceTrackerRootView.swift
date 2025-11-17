@@ -1,6 +1,13 @@
+//
+//  PriceTrackerRootView.swift
+//  RealTimePriceTracker
+//
+//  Created by Ammar on 17/11/2025.
+//
+
 import SwiftUI
 
-struct ContentView: View {
+struct PriceTrackerRootView: View {
     @StateObject private var viewModel: PriceFeedViewModel
     @State private var path: [String] = []
 
@@ -33,7 +40,7 @@ struct ContentView: View {
     }
 }
 
-extension ContentView {
+extension PriceTrackerRootView {
     static let defaultSymbols: [String] = [
         "AAPL", "GOOG", "TSLA", "AMZN", "MSFT", "NVDA", "META", "NFLX", "ORCL", "INTC",
         "AMD", "IBM", "AVGO", "ADBE", "CSCO", "CRM", "SAP", "SONY", "BABA", "PYPL",
