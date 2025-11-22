@@ -8,7 +8,7 @@ struct FeedView: View {
         VStack {
             topBar
             List(viewModel.quotes) { quote in
-                StockRowView(quote: quote)
+                StockRowView(viewModel: StockRowViewModel(quote: quote))
                     .contentShape(Rectangle())
                     .onTapGesture {
                         onSelectSymbol(quote.symbol)

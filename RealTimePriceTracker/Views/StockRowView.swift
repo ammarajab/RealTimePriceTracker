@@ -1,41 +1,19 @@
 import SwiftUI
 
 struct StockRowView: View {
-    let quote: StockQuote
-
-    private var changeIndicator: String {
-        switch quote.lastMovement {
-        case .up:
-            return "▲"
-        case .down:
-            return "▼"
-        case .none:
-            return ""
-        }
-    }
-
-    private var changeColor: Color {
-        switch quote.lastMovement {
-        case .up:
-            return .green
-        case .down:
-            return .red
-        case .none:
-            return .primary
-        }
-    }
+    let viewModel: StockRowViewModel
 
     var body: some View {
         HStack {
-            Text(quote.symbol)
+            Text(viewModel.symbolText)
                 .font(.headline)
             Spacer()
-            Text("$\(quote.price, specifier: "%.2f")")
+            Text(viewModel.priceText)
                 .font(.headline)
-                .foregroundStyle(changeColor)
-            Text(changeIndicator)
+                .foregroundStyle(viewModel.changeColor)
+            Text(viewModel.changeIndicator)
                 .font(.caption)
-                .foregroundStyle(changeColor)
+                .foregroundStyle(viewModel.changeColor)
         }
         .padding(.vertical, 8)
         .padding(.horizontal)
