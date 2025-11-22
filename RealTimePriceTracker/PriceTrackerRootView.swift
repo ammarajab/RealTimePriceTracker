@@ -25,7 +25,7 @@ struct PriceTrackerRootView: View {
             }
             .navigationDestination(for: String.self) { symbol in
                 if let quote = viewModel.quote(for: symbol) {
-                    SymbolDetailView(quote: quote)
+                    SymbolDetailView(viewModel: SymbolDetailViewModel(quote: quote))
                 } else {
                     Text("Symbol not found")
                 }
