@@ -3,21 +3,6 @@ import SwiftUI
 struct StockRowView: View {
     let quote: StockQuote
 
-    private var isFlashing: Bool {
-        Date().timeIntervalSince(quote.lastUpdated) < 1 && quote.lastMovement != .none
-    }
-
-    private var flashColor: Color {
-        switch quote.lastMovement {
-        case .up:
-            return .green.opacity(0.25)
-        case .down:
-            return .red.opacity(0.25)
-        case .none:
-            return .clear
-        }
-    }
-
     private var changeIndicator: String {
         switch quote.lastMovement {
         case .up:
@@ -25,7 +10,7 @@ struct StockRowView: View {
         case .down:
             return "▼"
         case .none:
-            return "="
+            return ""
         }
     }
 
@@ -36,37 +21,23 @@ struct StockRowView: View {
         case .down:
             return .red
         case .none:
-            return .secondary
+            return .primary
         }
     }
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(quote.symbol)
-                    .font(.headline)
-                Text(quote.description)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
+            Text(quote.symbol)
+                .font(.headline)
             Spacer()
-            VStack(alignment: .trailing, spacing: 4) {
-                Text("$\(quote.price, specifier: "%.2f")")
-                    .font(.headline)
-                HStack(spacing: 4) {
-                    Text(changeIndicator)
-                        .font(.caption)
-                    Text(quote.lastMovement == .none ? "" : "Updated")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                }
+            Text("$\(quote.price, specifier: "%.2f")")
+                .font(.headline)
                 .foregroundStyle(changeColor)
-            }
+            Text(changeIndicator)
+                .font(.caption)
+                .foregroundStyle(changeColor)
         }
         .padding(.vertical, 8)
         .padding(.horizontal)
-        .background(isFlashing ? flashColor : Color.clear)
-        .animation(.easeInOut(duration: 0.25), value: isFlashing)
     }
 }

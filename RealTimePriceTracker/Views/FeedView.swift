@@ -16,11 +16,8 @@ struct FeedView: View {
             }
             .listStyle(.plain)
         }
-        .navigationTitle("Stocks")
+        .navigationTitle("Feed")
         .toolbarTitleDisplayMode(.inline)
-        .onAppear {
-            viewModel.start()
-        }
     }
 
     private var topBar: some View {

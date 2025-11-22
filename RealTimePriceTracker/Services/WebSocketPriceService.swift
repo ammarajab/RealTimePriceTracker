@@ -74,8 +74,8 @@ final class WebSocketPriceService: PriceStreaming {
         guard let task else { return }
         symbols.forEach { symbol in
             let current = latestPrices[symbol] ?? basePrices[symbol] ?? 100
-            let delta = Double.random(in: -3...3)
-            let newPrice = max(1, (current + delta * 0.5).rounded(toPlaces: 2))
+            let delta = Double.random(in: -5...5)
+            let newPrice = max(1, (current + delta).rounded(toPlaces: 2))
             latestPrices[symbol] = newPrice
             let update = PriceUpdate(symbol: symbol, price: newPrice, timestamp: Date())
             send(update: update, through: task)

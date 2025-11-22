@@ -32,7 +32,7 @@ struct SymbolDetailView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle(quote.symbol)
+        .navigationTitle("Symbol Details")
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -43,7 +43,7 @@ struct SymbolDetailView: View {
         case .down:
             return "▼"
         case .none:
-            return "="
+            return ""
         }
     }
 }
